@@ -52,7 +52,7 @@ export default function Footer() {
                 className="flex items-center gap-2.5 text-white/35 hover:text-white text-sm transition-colors duration-200"
               >
                 <Mail size={14} />
-                hello@pekadev.id
+                pekadevstudio@gmail.com
               </a>
               <a
                 href="https://instagram.com/pekadev.studio"

@@ -32,7 +32,7 @@ export default function AboutSection() {
               <SectionHeader
                 badge="Tentang Kami"
                 title="Studio Digital dari"
-                highlight="Jantung Pekalongan"
+                highlight="Pekalongan"
                 center={false}
               />
             </motion.div>

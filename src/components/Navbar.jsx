@@ -4,7 +4,17 @@ import { Code2, Menu, X } from 'lucide-react'
 import { NAV_LINKS } from '../data'
 
 function scrollTo(href) {
-  document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' })
+  if (!href) return
+  // normalisasi: terima '#id', '/#id' atau URL penuh dengan hash
+  const hashIndex = href.indexOf('#')
+  const selector = hashIndex === -1 ? href : '#' + href.slice(hashIndex + 1)
+  const id = selector.startsWith('#') ? selector : `#${selector}`
+  const el = document.querySelector(id) || document.getElementById(id.replace('#', ''))
+  if (el) {
+    el.scrollIntoView({ behavior: 'smooth' })
+    return true
+  }
+  return false
 }
 
 export default function Navbar() {
@@ -19,7 +29,8 @@ export default function Navbar() {
 
   const handleNav = (href) => {
     setOpen(false)
-    scrollTo(href)
+    // beri delay supaya animasi tutup menu selesai dan tidak menghalangi scroll
+    setTimeout(() => scrollTo(href), 220)
   }
 
   return (

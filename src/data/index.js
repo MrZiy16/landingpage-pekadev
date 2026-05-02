@@ -168,3 +168,15 @@ export const ABOUT_CARDS = [
   { icon: null, label: 'Fast Loading', value: '< 2s Load Time', gradient: 'from-indigo-600 to-blue-400', iconName: 'Zap' },
   { icon: Shield, label: 'Secure', value: 'SSL & Firewall', gradient: 'from-blue-700 to-cyan-500' },
 ]
+export const CLIENTS = [
+
+
+  { abbr: 'SMK', name: 'SMK Islam Nusantara Comal',      cat: 'Pendidikan',   color: 'green' },
+
+  { abbr: 'BTK', name: 'Batik Trusmi Store',        cat: 'UMKM',         color: 'amber' },
+  { abbr: 'KUE', name: 'Dapur Mbak Yuli',           cat: 'UMKM',         color: 'amber' },
+  { abbr: 'CVS', name: 'CV Sejahtera Jaya',         cat: 'Perusahaan',   color: 'cyan' },
+  { abbr: 'UMKM',  name: 'Kemuning Catering Batang',     cat: 'UMKM',   color: 'cyan' },
+]
+
+

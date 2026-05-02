@@ -16,8 +16,8 @@ const CONTACT_ITEMS = [
   {
     iconName: 'Mail',
     label: 'Email',
-    value: 'hello@pekadev.id',
-    href: 'mailto:hello@pekadev.id',
+    value: 'pekadevstudio@gmail.com',
+    href: 'mailto:pekadevstudio@gmail.com',
     gradient: 'from-blue-600 to-blue-400',
   },
   {
