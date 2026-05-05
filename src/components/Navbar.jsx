@@ -51,7 +51,7 @@ export default function Navbar() {
           className="flex items-center gap-2.5 group"
         >
           <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-400 flex items-center justify-center shadow-lg shadow-blue-500/30 group-hover:shadow-blue-500/50 transition-shadow">
-            <Code2 size={16} className="text-white" />
+          <img src="/src/assets/logo.webp" alt="" />
           </div>
           <span className="font-bold text-white text-lg tracking-tight">
             Peka<span className="text-blue-400">Dev</span>

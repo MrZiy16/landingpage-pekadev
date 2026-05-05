@@ -11,6 +11,7 @@ import ContactSection from './components/ContactSection'
 import Footer from './components/Footer'
 import WhatsAppBubble from "./components/WhatsappBubble";
 
+
 export default function App() {
   return (
     <div className="bg-[#050b18] text-white min-h-screen overflow-x-hidden">

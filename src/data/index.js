@@ -6,6 +6,7 @@ import {
 import batikImage from '../assets/batik.png';
 import eduConnect from '../assets/educonnect.png';
 import proBuild from '../assets/probuild.png';
+import { link } from 'framer-motion/client';
 
 export const NAV_LINKS = [
   { label: 'Beranda', href: '#hero' },
@@ -56,13 +57,15 @@ export const SERVICES = [
 
 export const PORTFOLIO = [
   {
-    title: 'EduConnect School Portal',
+    title: 'Admin Dashboard UMKM',
     category: 'Sistem Informasi',
     tech: ['Laravel', 'MySQL', 'Tailwind'],
     gradient: 'from-blue-600 to-cyan-500',
     icon: LayoutDashboard,
     desc: 'Portal manajemen sekolah lengkap dengan fitur akademik, absensi, dan laporan.',
     image: eduConnect,
+    link:'https://demo-admin-dashboard-tan.vercel.app/'
+   
   },
   {
     title: 'Batik Nusantara Store',
@@ -71,16 +74,17 @@ export const PORTFOLIO = [
     gradient: 'from-violet-600 to-blue-500',
     icon: ShoppingBag,
     desc: 'Toko online UMKM batik dengan fitur katalog produk dan WhatsApp checkout.',
-    image: batikImage,
+    image: batikImage, link:'https://demo-batik-nusantara.vercel.app/'
   },
   {
-    title: 'ProBuild Construction',
+    title: 'Ironforge Construction',
     category: 'Company Profile',
-    tech: ['Next.js', 'Framer Motion'],
+    tech: ['React.js', 'Framer Motion'],
     gradient: 'from-slate-700 to-blue-600',
     icon: Globe,
     desc: 'Website company profile premium untuk kontraktor dengan animasi modern.',
     image: proBuild,
+    link:'https://demo-ui-ironforge.vercel.app//'
   },
   
 ]

@@ -119,7 +119,7 @@ export default function HeroSection() {
           <span className="block">
             untuk{' '}
             <span className="bg-gradient-to-r from-blue-400 via-sky-400 to-indigo-400 bg-clip-text text-transparent">
-              UMKM, Sekolah,
+              UMKM, Sekolah,Kuliah
             </span>
           </span>
           <span className="block">dan Perusahaan</span>
