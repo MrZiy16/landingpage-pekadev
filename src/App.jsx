@@ -10,6 +10,7 @@ import TestimonialsSection from './components/TestimonialsSection'
 import ContactSection from './components/ContactSection'
 import Footer from './components/Footer'
 import WhatsAppBubble from "./components/WhatsappBubble";
+import PricingSection from './components/PriccingSection'
 
 
 export default function App() {
@@ -20,6 +21,7 @@ export default function App() {
       <TrustSection />
       <AboutSection />
       <ServicesSection />
+      <PricingSection />
       <ProcessSection />
       <PortfolioSection />
       <WhyUsSection />

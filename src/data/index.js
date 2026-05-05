@@ -159,7 +159,6 @@ export const CONTACT_ITEMS = [
 
 export const HERO_STATS = [
   { val: '50+', label: 'Project Selesai' },
-  { val: '40+', label: 'Klien Puas' },
   { val: '3+', label: 'Tahun Pengalaman' },
   { val: '100%', label: 'Custom Built' },
 ]
