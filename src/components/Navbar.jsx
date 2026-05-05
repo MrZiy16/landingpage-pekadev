@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Code2, Menu, X } from 'lucide-react'
 import { NAV_LINKS } from '../data'
+import logo from '../assets/logo.png'
 
 function scrollTo(href) {
   if (!href) return
@@ -51,7 +52,7 @@ export default function Navbar() {
           className="flex items-center gap-2.5 group"
         >
           <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-400 flex items-center justify-center shadow-lg shadow-blue-500/30 group-hover:shadow-blue-500/50 transition-shadow">
-          <img src="/src/assets/logo.png" alt="" />
+          <img src={logo} alt="PekaDev Logo" />
           </div>
           <span className="font-bold text-white text-lg tracking-tight">
             Peka<span className="text-blue-400">Dev</span>
