@@ -1,11 +1,26 @@
 import { useState } from "react";
 
-const WA_NUMBER = "628951183961"; // Ganti dengan nomor WhatsApp PekaDev Studio
+const WA_NUMBER = "628951183961";
 
 const plans = [
   {
+    name: "Tugas Mahasiswa",
+    price: "Rp 70.000",
+    tagline: "Solusi cepat dan terjangkau untuk tugas kuliah, skripsi, dan proyek akademik.",
+    popular: false,
+    features: [
+      { text: "Website/Aplikasi sederhana", included: true },
+      { text: "Konsultasi teknis", included: true },
+      { text: "Source code lengkap", included: true },
+      { text: "Buku Panduan", included: true },
+      { text: "Revisi unlimited", included: false },
+    ],
+    waMessage: "Halo PekaDev Studio, saya butuh bantuan tugas kuliah/skripsi. Paket Tugas Mahasiswa (Rp 70.000) tersedia?",
+    cta: "Mulai dari Rp 70K",
+  },
+  {
     name: "Starter",
-    price: "Rp 1.000.000",
+    price: "Rp 500.000",
     tagline: "Ideal untuk UMKM dan usaha rintisan yang butuh kehadiran digital cepat.",
     popular: false,
     features: [
@@ -82,107 +97,32 @@ function PricingCard({ plan, index }) {
     <div
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      style={{
-        position: "relative",
-        background: "#111827",
-        border: plan.popular ? "2px solid #2563eb" : "1px solid #1f2937",
-        borderRadius: "16px",
-        padding: "32px 28px",
-        display: "flex",
-        flexDirection: "column",
-        transition: "transform 0.2s ease, box-shadow 0.2s ease",
-        transform: hovered ? "translateY(-4px)" : "translateY(0)",
-        boxShadow: hovered
-          ? "0 12px 32px rgba(37,99,235,0.15)"
-          : plan.popular
-          ? "0 4px 16px rgba(37,99,235,0.15)"
-          : "none",
-        animationDelay: `${index * 0.1}s`,
-      }}
+      className={`relative bg-slate-900/50 border transition-all duration-200 ${
+        plan.popular ? "border-blue-500 shadow-lg shadow-blue-500/20" : "border-slate-700"
+      } ${hovered ? "transform -translate-y-1 shadow-xl shadow-blue-500/20" : ""} rounded-2xl p-8 flex flex-col`}
     >
       {plan.popular && (
-        <div
-          style={{
-            position: "absolute",
-            top: "-14px",
-            left: "28px",
-            background: "#2563eb",
-            color: "#fff",
-            fontSize: "11px",
-            fontWeight: 600,
-            padding: "4px 14px",
-            borderRadius: "999px",
-            letterSpacing: "0.04em",
-          }}
-        >
+        <div className="absolute -top-3 left-8 bg-blue-600 text-white text-xs font-semibold px-3 py-1 rounded-full">
           Paling Populer
         </div>
       )}
 
-      <p
-        style={{
-          fontSize: "12px",
-          fontWeight: 600,
-          color: plan.popular ? "#2563eb" : "#9ca3af",
-          textTransform: "uppercase",
-          letterSpacing: "0.08em",
-          margin: "0 0 12px",
-          fontFamily: "'DM Sans', sans-serif",
-        }}
-      >
+      <p className={`text-xs font-bold uppercase tracking-widest mb-3 ${plan.popular ? "text-blue-400" : "text-slate-400"}`}>
         {plan.name}
       </p>
 
-      <div style={{ marginBottom: "6px", display: "flex", alignItems: "baseline", gap: "4px" }}>
-        <span
-          style={{
-            fontSize: "32px",
-            fontWeight: 700,
-            color: "#ffffff",
-            fontFamily: "'DM Sans', sans-serif",
-            lineHeight: 1,
-          }}
-        >
-          {plan.price}
-        </span>
-        {plan.price !== "Custom" && (
-          <span style={{ fontSize: "13px", color: "#9ca3af" }}>/ sekali bayar</span>
-        )}
+      <div className="mb-2 flex items-baseline gap-1">
+        <span className="text-4xl font-bold text-white">{plan.price}</span>
+        {plan.price !== "Custom" && <span className="text-sm text-slate-400">/ sekali bayar</span>}
       </div>
 
-      <p
-        style={{
-          fontSize: "13.5px",
-          color: "#d1d5db",
-          lineHeight: 1.6,
-          margin: "0 0 24px",
-          fontFamily: "'DM Sans', sans-serif",
-        }}
-      >
-        {plan.tagline}
-      </p>
+      <p className="text-sm text-slate-300 leading-relaxed mb-6">{plan.tagline}</p>
 
-      <div
-        style={{
-          borderTop: "1px solid #1f2937",
-          paddingTop: "20px",
-          marginBottom: "28px",
-          display: "flex",
-          flexDirection: "column",
-          gap: "12px",
-          flex: 1,
-        }}
-      >
+      <div className="border-t border-slate-700 pt-5 mb-7 flex flex-col gap-3 flex-1">
         {plan.features.map((f, i) => (
-          <div key={i} style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+          <div key={i} className="flex items-center gap-3">
             {f.included ? <CheckIcon /> : <MinusIcon />}
-            <span
-              style={{
-                fontSize: "13.5px",
-                color: f.included ? "#e5e7eb" : "#6b7280",
-                fontFamily: "'DM Sans', sans-serif",
-              }}
-            >
+            <span className={`text-sm ${f.included ? "text-slate-200" : "text-slate-500"}`}>
               {f.text}
             </span>
           </div>
@@ -191,25 +131,11 @@ function PricingCard({ plan, index }) {
 
       <button
         onClick={handleWA}
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          gap: "8px",
-          width: "100%",
-          padding: "13px 20px",
-          borderRadius: "10px",
-          border: "none",
-          cursor: "pointer",
-          fontSize: "14px",
-          fontWeight: 600,
-          fontFamily: "'DM Sans', sans-serif",
-          background: plan.popular ? "#2563eb" : "#111827",
-          color: "#fff",
-          transition: "opacity 0.15s ease",
-        }}
-        onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.85")}
-        onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
+        className={`flex items-center justify-center gap-2 w-full py-3 px-5 rounded-xl font-semibold transition-all duration-150 ${
+          plan.popular
+            ? "bg-blue-600 text-white hover:bg-blue-700 shadow-lg shadow-blue-600/30"
+            : "bg-slate-800 text-white border border-slate-700 hover:bg-slate-700"
+        }`}
       >
         <WhatsAppIcon />
         {plan.cta}
@@ -220,81 +146,36 @@ function PricingCard({ plan, index }) {
 
 export default function PricingSection() {
   return (
-    <>
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap');
-        .pricing-wrapper * { box-sizing: border-box; }
-      `}</style>
-
-      <section
-        className="pricing-wrapper"
-        style={{
-          padding: "80px 24px",
-          background: "#050b18",
-          fontFamily: "'DM Sans', sans-serif",
-        }}
-      >
-        <div style={{ maxWidth: "1000px", margin: "0 auto" }}>
-          {/* Header */}
-          <div style={{ marginBottom: "56px", textAlign: "center" }}>
-            <p
-              style={{
-                fontSize: "12px",
-                fontWeight: 600,
-                color: "#2563eb",
-                textTransform: "uppercase",
-                letterSpacing: "0.1em",
-                margin: "0 0 12px",
-              }}
-            >
-              Layanan Kami
-            </p>
-            <h2
-              style={{
-                fontSize: "clamp(28px, 5vw, 40px)",
-                fontWeight: 700,
-                color: "#ffffff",
-                margin: "0 0 14px",
-                lineHeight: 1.2,
-                fontFamily: "'DM Serif Display', serif",
-              }}
-            >
-              Pilih paket yang tepat
-              <br />untuk bisnis Anda
-            </h2>
-            <p style={{ fontSize: "15px", color: "#a0aec0", margin: 0, maxWidth: "480px", marginInline: "auto", lineHeight: 1.7 }}>
-              Solusi digital profesional untuk UMKM, perusahaan, sekolah, dan instansi di Pekalongan dan sekitarnya.
-            </p>
-          </div>
-
-          {/* Cards */}
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-              gap: "20px",
-              alignItems: "start",
-            }}
-          >
-            {plans.map((plan, i) => (
-              <PricingCard key={plan.name} plan={plan} index={i} />
-            ))}
-          </div>
-
-          {/* Footer note */}
-          <p
-            style={{
-              textAlign: "center",
-              fontSize: "13px",
-              color: "#6b7280",
-              marginTop: "40px",
-            }}
-          >
-            Harga belum termasuk biaya revisi di luar kesepakatan.{" "}
-            <span style={{ color: "#2563eb", fontWeight: 500 }}>Konsultasi gratis</span> tersedia untuk semua paket.
+    <section className="py-20 bg-gradient-to-b from-slate-950 to-slate-900">
+      <div className="max-w-6xl mx-auto px-6">
+        {/* Header */}
+        <div className="text-center mb-14">
+          <p className="text-xs font-bold uppercase tracking-widest text-blue-400 mb-3">
+            Layanan Kami
+          </p>
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 leading-tight">
+            Pilih paket yang tepat
+            <br />
+            untuk bisnis Anda
+          </h2>
+          <p className="text-slate-400 text-base max-w-2xl mx-auto leading-relaxed">
+            Solusi digital profesional untuk UMKM, perusahaan, sekolah, dan instansi di Pekalongan dan sekitarnya.
           </p>
         </div>
-      </section>
-    </>
+
+        {/* Cards */}
+        <div className="grid md:grid-cols-3 gap-6 items-start mb-8">
+          {plans.map((plan, i) => (
+            <PricingCard key={plan.name} plan={plan} index={i} />
+          ))}
+        </div>
+
+        {/* Footer note */}
+        <p className="text-center text-sm text-slate-400">
+          Harga belum termasuk biaya revisi di luar kesepakatan.{" "}
+          <span className="text-blue-400 font-medium">Konsultasi gratis</span> tersedia untuk semua paket.
+        </p>
+      </div>
+    </section>
   );
 }
