@@ -1,6 +1,6 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { MessageCircle, ExternalLink, ArrowRight } from 'lucide-react'
-import heroBg from '../assets/hero.jpg'
+import heroBg from '../assets/hero.jpg?w=1920&format=webp&quality=75'
 import { HERO_STATS } from '../data'
 
 const FLOATING_TAGS = [
@@ -32,6 +32,7 @@ export default function HeroSection() {
             backgroundImage: `url(${heroBg})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
+            backfaceVisibility: 'hidden', // Prevent flickering
           }}
         />
         <div className="absolute inset-0 bg-black/70" />

@@ -13,12 +13,14 @@ import WhatsAppBubble from "./components/WhatsappBubble";
 import PricingSection from './components/PriccingSection'
 
 
+
 export default function App() {
   return (
     <div className="bg-[#050b18] text-white min-h-screen overflow-x-hidden">
       <Navbar />
       <HeroSection />
       <TrustSection />
+
       <AboutSection />
       <ServicesSection />
       <PricingSection />

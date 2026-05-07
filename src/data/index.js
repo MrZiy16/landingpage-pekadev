@@ -74,7 +74,8 @@ export const PORTFOLIO = [
     gradient: 'from-violet-600 to-blue-500',
     icon: ShoppingBag,
     desc: 'Toko online UMKM batik dengan fitur katalog produk dan WhatsApp checkout.',
-    image: batikImage, link:'https://demo-batik-nusantara.vercel.app/'
+    image: 'batik.png', // String path, lazy load di component
+    link:'https://demo-batik-nusantara.vercel.app/'
   },
   {
     title: 'Ironforge Construction',
