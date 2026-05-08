@@ -6,6 +6,8 @@ import {
 import batikImage from '../assets/batik.png';
 import eduConnect from '../assets/educonnect.png';
 import proBuild from '../assets/probuild.png';
+import Kebaya from '../assets/kebaya.png';
+import Rental from '../assets/rental.png';
 import { link } from 'framer-motion/client';
 
 export const NAV_LINKS = [
@@ -86,6 +88,26 @@ export const PORTFOLIO = [
     desc: 'Website company profile premium untuk kontraktor dengan animasi modern.',
     image: proBuild,
     link:'https://demo-ui-ironforge.vercel.app//'
+  },
+    {
+    title: 'Kenanga Kebaya',
+    category: 'Website UMKM',
+    tech: ['Laravel', 'MySQL'],
+    gradient: 'from-slate-700 to-blue-600',
+    icon: Globe,
+    desc: 'Website UMKM untuk brand kebaya dengan desain elegan dan fitur e-commerce.',
+    image: Kebaya,
+    link:'https://kebaya-demo.netlify.app/'
+  },
+    {
+    title: 'Rental Mobil AutoNusa',
+    category: 'Website UMKM',
+    tech: ['Laravel', 'MySQL'],
+    gradient: 'from-slate-700 to-blue-600',
+    icon: Globe,
+    desc: 'Website UMKM untuk layanan rental mobil dengan sistem pemesanan online.',
+    image: Rental,
+    link:'https://demo-rental-mobill.netlify.app/'
   },
   
 ]

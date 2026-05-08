@@ -22,11 +22,11 @@ export default function App() {
       <TrustSection />
 
       <AboutSection />
+      <WhyUsSection />
       <ServicesSection />
       <PricingSection />
       <ProcessSection />
       <PortfolioSection />
-      <WhyUsSection />
       <TestimonialsSection />
       <ContactSection />
       <Footer />
