@@ -10,7 +10,7 @@ const CONTACT_ITEMS = [
     iconName: 'MessageCircle',
     label: 'WhatsApp',
     value: '+62 897-1183-961',
-    href: 'https://wa.me/628971183961?text=Halo%20PekaDev%20Studio,%20saya%20ingin%20konsultasi%20project',
+    href: 'https://wa.me/628964685788?text=Halo%20PekaDev%20Studio,%20saya%20ingin%20konsultasi%20project',
     gradient: 'from-green-600 to-emerald-400',
   },
   {
@@ -92,7 +92,7 @@ export default function ContactSection() {
           {/* Primary CTA */}
           <motion.a
             variants={fadeUp}
-            href="https://wa.me/628971183961?text=Halo%20PekaDev%20Studio,%20saya%20ingin%20konsultasi%20project%20website"
+            href="https://wa.me/628964685788?text=Halo%20PekaDev%20Studio,%20saya%20ingin%20konsultasi%20project%20website"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-3 px-10 py-5 rounded-2xl bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-bold text-lg shadow-2xl shadow-blue-500/30 hover:shadow-blue-500/50 hover:scale-105 transition-all duration-300"
