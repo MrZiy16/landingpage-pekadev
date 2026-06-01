@@ -9,7 +9,7 @@ const CONTACT_ITEMS = [
   {
     iconName: 'MessageCircle',
     label: 'WhatsApp',
-    value: '+62 897-1183-961',
+    value: '+62 851-1913-4240',
     href: 'https://wa.me/628964685788?text=Halo%20PekaDev%20Studio,%20saya%20ingin%20konsultasi%20project',
     gradient: 'from-green-600 to-emerald-400',
   },

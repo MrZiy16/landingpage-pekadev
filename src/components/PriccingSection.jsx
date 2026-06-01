@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Check, X } from "lucide-react";
 
-const WA_NUMBER = "628964685788"; // Ganti dari 628971183961
+const WA_NUMBER = "6285119134240";
 
 const plans = [
 	{
