@@ -1,13 +1,9 @@
-import { motion, useScroll, useTransform } from 'framer-motion'
-import { MessageCircle, ExternalLink, ArrowRight } from 'lucide-react'
-import heroBg from '../assets/hero.jpg?w=1920&format=webp&quality=75'
-import { HERO_STATS } from '../data'
+import { motion } from 'framer-motion'
+import { ArrowRight, Zap, Star } from 'lucide-react'
 
-const FLOATING_TAGS = [
-  { label: 'Flutter',  pos: 'top-[16%] right-[4%]',    delay: 0 },
-  { label: 'Laravel',  pos: 'top-[32%] left-[3%]',     delay: 0.5 },
-  { label: 'React.js', pos: 'bottom-[26%] right-[5%]', delay: 0.3 },
-  { label: 'Node.js',  pos: 'bottom-[28%] left-[7%]',  delay: 0.7 },
+const STATS = [
+  { val: '50+', label: 'Proyek selesai' },
+  { val: '24/7', label: 'Support' },
 ]
 
 function scrollTo(href) {
@@ -15,224 +11,182 @@ function scrollTo(href) {
 }
 
 export default function HeroSection() {
-  const { scrollY } = useScroll()
-  const y = useTransform(scrollY, [0, 500], [0, 100])
-
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden w-full"
-      style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", overflowX: 'hidden' }}
+      className="relative w-full min-h-screen overflow-hidden flex items-center"
+      style={{
+        fontFamily: "'Plus Jakarta Sans', sans-serif",
+        background: 'linear-gradient(160deg, #ffffff 0%, #f5f9ff 45%, #e6f0ff 100%)',
+      }}
     >
-      {/* Background image */}
-      <motion.div style={{ y }} className="absolute inset-0 scale-110" aria-hidden="true">
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `url(${heroBg})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backfaceVisibility: 'hidden', // Prevent flickering
-          }}
-        />
-        <div className="absolute inset-0 bg-black/70" />
-      </motion.div>
-
-      {/* Grid pattern */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          backgroundImage:
-            'linear-gradient(rgba(30,90,220,0.055) 1px,transparent 1px),linear-gradient(90deg,rgba(30,90,220,0.055) 1px,transparent 1px)',
-          backgroundSize: '52px 52px',
-        }}
-      />
-
       {/* Glow orbs */}
-      <div aria-hidden="true" className="absolute inset-0 pointer-events-none">
+      <div aria-hidden="true" className="absolute inset-0 pointer-events-none hidden md:block">
         <div
-          className="absolute -top-32 -right-20 w-[400px] h-[400px] lg:w-[560px] lg:h-[560px] rounded-full"
-          style={{ background: 'radial-gradient(circle,rgba(29,78,216,0.22) 0%,transparent 65%)' }}
+          className="absolute -top-24 -right-24 w-[400px] h-[400px] rounded-full"
+          style={{ background: 'radial-gradient(circle,rgba(59,130,246,0.18) 0%,transparent 65%)' }}
         />
         <div
-          className="absolute -bottom-20 -left-24 w-[320px] h-[320px] lg:w-[480px] lg:h-[480px] rounded-full"
-          style={{ background: 'radial-gradient(circle,rgba(79,30,160,0.18) 0%,transparent 65%)' }}
-        />
-        <div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[200px] lg:w-[600px] lg:h-[280px] rounded-full"
-          style={{ background: 'radial-gradient(ellipse,rgba(14,50,140,0.14) 0%,transparent 70%)' }}
+          className="absolute bottom-0 -left-20 w-[350px] h-[350px] rounded-full"
+          style={{ background: 'radial-gradient(circle,rgba(37,99,235,0.12) 0%,transparent 65%)' }}
         />
       </div>
 
-      {/* Floating badges — lg only */}
-      {FLOATING_TAGS.map((b) => (
-        <motion.div
-          key={b.label}
-          initial={{ opacity: 0, scale: 0.85 }}
-          animate={{ opacity: 1, scale: 1, y: [0, -8, 0] }}
-          transition={{ delay: b.delay + 1, duration: 3.5, repeat: Infinity, ease: 'easeInOut' }}
-          className={`absolute hidden lg:flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] tracking-wider ${b.pos}`}
-          style={{
-            background: 'rgba(255,255,255,0.03)',
-            border: '1px solid rgba(59,130,246,0.15)',
-            color: 'rgba(148,179,255,0.5)',
-          }}
-          aria-hidden="true"
-        >
-          <span className="w-1.5 h-1.5 rounded-full bg-blue-400 opacity-70" />
-          {b.label}
-        </motion.div>
-      ))}
-
-      {/* Main content */}
-      <div className="relative z-10 text-center w-full max-w-3xl mx-auto px-5 sm:px-8 pt-24 pb-16 flex flex-col items-center">
-
-        {/* Eyebrow badge */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-7"
-          style={{
-            border: '1px solid rgba(96,165,250,0.2)',
-            background: 'rgba(96,165,250,0.06)',
-          }}
-        >
-          <span className="w-1.5 h-1.5 rounded-full bg-sky-400 shrink-0" />
-          <span
-            className="text-[10px] sm:text-[11px] font-normal tracking-widest uppercase"
-            style={{ color: 'rgba(147,197,253,0.85)' }}
+      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 pt-24 pb-20 grid lg:grid-cols-2 gap-12 items-center">
+        {/* Left: text */}
+        <div>
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-6"
+            style={{ border: '1px solid rgba(37,99,235,0.2)', background: 'rgba(37,99,235,0.06)' }}
           >
-            Digital Agency — Pekalongan, Jawa Tengah
-          </span>
-        </motion.div>
-
-        {/* Headline */}
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.35, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-          className="text-[2rem] sm:text-5xl lg:text-[62px] font-extrabold text-white leading-[1.15] tracking-tight mb-5 w-full"
-          style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", wordBreak: 'keep-all' }}
-        >
-          Solusi Digital Modern{' '}
-          <span className="block">
-            untuk{' '}
-            <span className="bg-gradient-to-r from-blue-400 via-sky-400 to-indigo-400 bg-clip-text text-transparent">
-              UMKM, Sekolah,Kuliah
+            <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
+            <span className="text-[11px] font-medium tracking-wide text-blue-700">
+              Digital agency dari Pekalongan
             </span>
-          </span>
-          <span className="block">dan Perusahaan</span>
-        </motion.h1>
+          </motion.div>
 
-        {/* Subheadline */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5 }}
-          className="text-sm sm:text-base lg:text-[15.5px] font-light leading-relaxed max-w-[540px] mx-auto mb-9"
-          style={{ color: 'rgba(203,213,255,0.52)' }}
-        >
-          Kami membantu bisnis meningkatkan kredibilitas, penjualan, dan efisiensi
-          melalui website profesional yang{' '}
-          <span style={{ color: 'rgba(203,213,255,0.82)' }}>
-            cepat, modern, dan siap bersaing
-          </span>.
-        </motion.p>
-
-        {/* CTA Buttons */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.65 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-12 w-full sm:w-auto"
-        >
-          <button
-            onClick={() => scrollTo('#contact')}
-            className="group flex items-center justify-center gap-2.5 w-full sm:w-auto px-6 py-3.5 rounded-xl text-white font-medium text-sm transition-all duration-300 hover:opacity-90 hover:-translate-y-0.5"
-            style={{
-              background: 'linear-gradient(135deg,#1d4ed8 0%,#0284c7 100%)',
-              boxShadow: '0 0 0 1px rgba(96,165,250,0.3), 0 8px 24px rgba(29,78,216,0.3)',
-            }}
+          <motion.h1
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.8 }}
+            className="text-4xl sm:text-5xl font-extrabold text-slate-900 leading-[1.15] mb-5"
           >
-            <MessageCircle size={16} />
-            Konsultasi Project Sekarang
-            <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-          </button>
+            Website profesional yang bikin bisnis Anda{' '}
+            <span className="bg-gradient-to-r from-blue-600 to-sky-500 bg-clip-text text-transparent">
+              naik kelas
+            </span>
+          </motion.h1>
 
-          <button
-            onClick={() => scrollTo('#portfolio')}
-            className="flex items-center justify-center gap-2.5 w-full sm:w-auto px-6 py-3.5 rounded-xl font-medium text-sm transition-all duration-300 hover:-translate-y-0.5"
-            style={{
-              border: '1px solid rgba(255,255,255,0.1)',
-              background: 'rgba(255,255,255,0.04)',
-              color: 'rgba(255,255,255,0.72)',
-              backdropFilter: 'blur(12px)',
-            }}
-            onMouseEnter={e => e.currentTarget.style.background = 'rgba(255,255,255,0.08)'}
-            onMouseLeave={e => e.currentTarget.style.background = 'rgba(255,255,255,0.04)'}
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.35 }}
+            className="text-slate-500 text-base leading-relaxed max-w-md mb-8"
           >
-            Lihat Hasil Project Kami
-            <ExternalLink size={14} />
-          </button>
-        </motion.div>
+            PekaDev Studio membantu UMKM dan bisnis lokal memiliki website cepat, modern, dan siap berjualan online — dari desain hingga maintenance.
+          </motion.p>
 
-        {/* Stats bar */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.85 }}
-          className="flex items-center justify-center w-full max-w-sm sm:max-w-xl mx-auto rounded-2xl py-5 px-4 sm:px-10"
-          style={{
-            background: 'rgba(255,255,255,0.025)',
-            border: '1px solid rgba(255,255,255,0.06)',
-            backdropFilter: 'blur(16px)',
-          }}
-        >
-          {HERO_STATS.map((s, i) => (
-            <div key={s.label} className="flex items-center flex-1">
-              <div className="text-center flex-1">
-                <div
-                  className="text-2xl sm:text-3xl font-bold tracking-tight leading-tight"
-                  style={{ fontFamily: "'Syne', sans-serif", color: '#fff' }}
-                >
-                  <span className="bg-gradient-to-r from-blue-400 to-sky-400 bg-clip-text text-transparent">
-                    {s.val.replace('+', '')}
-                  </span>+
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5 }}
+            className="flex flex-col sm:flex-row gap-3 mb-12"
+          >
+            <button
+              onClick={() => scrollTo('#kontak')}
+              className="group flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl text-white font-semibold text-sm transition hover:opacity-90 hover:-translate-y-0.5"
+              style={{
+                background: 'linear-gradient(135deg,#2563eb 0%,#0ea5e9 100%)',
+                boxShadow: '0 8px 24px rgba(37,99,235,0.25)',
+              }}
+            >
+              Konsultasi gratis
+              <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+            </button>
+            <button
+              onClick={() => scrollTo('#portfolio')}
+              className="px-6 py-3.5 rounded-xl font-semibold text-sm text-slate-700 transition hover:-translate-y-0.5"
+              style={{ border: '1px solid rgba(15,23,42,0.12)', background: 'rgba(255,255,255,0.6)' }}
+            >
+              Lihat portfolio
+            </button>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.65 }}
+            className="flex items-center gap-8"
+          >
+            {STATS.map((s, i) => (
+              <div key={s.label} className="flex items-center gap-8">
+                <div>
+                  <div className="text-2xl font-bold text-slate-900">{s.val}</div>
+                  <div className="text-xs text-slate-400 mt-1">{s.label}</div>
                 </div>
-                <div
-                  className="text-[10px] sm:text-[11px] uppercase tracking-widest mt-1.5 font-normal"
-                  style={{ color: 'rgba(148,163,255,0.45)' }}
-                >
-                  {s.label}
-                </div>
+                {i < STATS.length - 1 && <div className="w-px h-8 bg-slate-200" />}
               </div>
-              {i < HERO_STATS.length - 1 && (
-                <div
-                  className="hidden sm:block w-px h-10 mx-2 shrink-0"
-                  style={{ background: 'rgba(255,255,255,0.07)' }}
-                />
-              )}
+            ))}
+          </motion.div>
+        </div>
+
+        {/* Right: mockup card */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.92 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.3, duration: 0.7 }}
+          className="relative hidden lg:block"
+        >
+          <div
+            className="relative bg-white rounded-2xl p-5 max-w-sm ml-auto"
+            style={{ boxShadow: '0 20px 60px rgba(15,23,42,0.12)', border: '1px solid rgba(15,23,42,0.06)' }}
+          >
+            <div className="flex items-center gap-1.5 mb-4">
+              <span className="w-2.5 h-2.5 rounded-full bg-red-400" />
+              <span className="w-2.5 h-2.5 rounded-full bg-yellow-400" />
+              <span className="w-2.5 h-2.5 rounded-full bg-green-400" />
             </div>
-          ))}
+            <div className="h-3 w-2/3 bg-slate-800 rounded mb-2" />
+            <div className="h-2.5 w-full bg-slate-200 rounded mb-2" />
+            <div className="h-2.5 w-5/6 bg-slate-200 rounded mb-4" />
+            <div className="grid grid-cols-2 gap-3">
+              <div className="h-16 rounded-xl bg-[#0a1f44] flex items-center justify-center">
+                <Zap size={20} className="text-white" />
+              </div>
+              <div className="h-16 rounded-xl bg-blue-500 flex items-center justify-center">
+                <Star size={20} className="text-white" />
+              </div>
+            </div>
+          </div>
+
+          <motion.div
+            animate={{ y: [0, -8, 0] }}
+            transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+            className="absolute -top-4 left-2 flex items-center gap-1.5 bg-white rounded-xl px-3 py-2 text-xs font-medium text-slate-700"
+            style={{ boxShadow: '0 8px 24px rgba(15,23,42,0.1)' }}
+          >
+            <Zap size={12} className="text-blue-500" />
+            Loading &lt; 2 detik
+          </motion.div>
+
+          <motion.div
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut' }}
+            className="absolute -bottom-6 left-0 bg-white rounded-xl px-4 py-3 max-w-[220px]"
+            style={{ boxShadow: '0 8px 24px rgba(15,23,42,0.1)' }}
+          >
+            <div className="flex gap-0.5 mb-1.5">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} size={11} className="fill-amber-400 text-amber-400" />
+              ))}
+            </div>
+            <p className="text-xs text-slate-600 mb-2 leading-snug">
+              Website jadi lebih cepat, klien kami naik 40%.
+            </p>
+            <div className="flex items-center gap-2">
+              <div className="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center text-[10px] font-bold text-blue-700">
+                RH
+              </div>
+              <div>
+                <div className="text-[11px] font-semibold text-slate-800 leading-none">Rina H.</div>
+                <div className="text-[10px] text-slate-400 leading-none mt-0.5">pemilik toko busana</div>
+              </div>
+            </div>
+          </motion.div>
+
+          <motion.div
+            animate={{ y: [0, -6, 0] }}
+            transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
+            className="absolute top-1/2 -right-4 bg-white rounded-xl px-3 py-2 text-xs font-medium text-slate-700"
+            style={{ boxShadow: '0 8px 24px rgba(15,23,42,0.1)' }}
+          >
+            100% Responsive
+          </motion.div>
         </motion.div>
       </div>
-
-      {/* Scroll cue */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.4 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 cursor-pointer"
-        onClick={() => scrollTo('#about')}
-      >
-        <div
-          className="w-px h-7"
-          style={{ background: 'linear-gradient(to bottom,rgba(96,165,250,0.4),transparent)' }}
-        />
-        <div className="w-1 h-1 rounded-full" style={{ background: 'rgba(96,165,250,0.5)' }} />
-      </motion.div>
     </section>
   )
 }

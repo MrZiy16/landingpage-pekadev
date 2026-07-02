@@ -7,7 +7,7 @@ const WA_NUMBER = "6285119134240";
 const plans = [
 	{
 		name: "Tugas Mahasiswa",
-		price: "Rp 100.000",
+		price: "Start From Rp 80K",
 		billing: "one-time",
 		tagline: "Solusi cepat untuk tugas kuliah, skripsi, dan proyek akademik.",
 		popular: false,
@@ -19,12 +19,12 @@ const plans = [
 			{ text: "Revisi unlimited", included: false },
 		],
 		waMessage:
-			"Halo PekaDev Studio, saya butuh bantuan tugas kuliah/skripsi. Paket Tugas Mahasiswa (Rp 70.000) tersedia?",
+			"Halo PekaDev Digital, saya butuh bantuan tugas kuliah/skripsi. Paket Tugas Mahasiswa (Rp 70.000) tersedia?",
 		cta: "Mulai dari Rp 70K",
 	},
 	{
 		name: "Starter",
-		price: "Rp 1.000.000",
+		price: "Rp 850.000",
 		billing: "one-time",
 		tagline: "Ideal untuk UMKM dan usaha rintisan.",
 		popular: false,
@@ -36,7 +36,7 @@ const plans = [
 			{ text: "Integrasi payment gateway", included: false },
 		],
 		waMessage:
-			"Halo PekaDev Studio, saya tertarik dengan paket *Starter* (Rp 1.000.000). Boleh info lebih lanjut?",
+			"Halo PekaDev Digital, saya tertarik dengan paket *Starter* (Rp 1.000.000). Boleh info lebih lanjut?",
 		cta: "Mulai dengan Starter",
 	},
 	{
@@ -53,7 +53,7 @@ const plans = [
 			{ text: "Integrasi payment gateway", included: false },
 		],
 		waMessage:
-			"Halo PekaDev Studio, saya tertarik dengan paket *Pro* (Rp 3.500.000). Boleh info lebih lanjut?",
+			"Halo PekaDev Digital, saya tertarik dengan paket *Pro* (Rp 3.500.000). Boleh info lebih lanjut?",
 		cta: "Mulai dengan Pro",
 	},
 	{
@@ -70,7 +70,7 @@ const plans = [
 			{ text: "Integrasi payment gateway", included: true },
 		],
 		waMessage:
-			"Halo PekaDev Studio, saya ingin konsultasi mengenai paket *Enterprise*. Boleh dibantu?",
+			"Halo PekaDev Digital, saya ingin konsultasi mengenai paket *Enterprise*. Boleh dibantu?",
 		cta: "Hubungi Kami",
 	},
 ];
@@ -92,7 +92,7 @@ const subscriptionPlans = [
 			{ text: "Traffic unlimited", included: false },
 		],
 		waMessage:
-			"Halo PekaDev Studio, saya tertarik Web-as-a-Service *Lite* (Rp 250.000/bulan). Boleh info?",
+			"Halo PekaDev Digital, saya tertarik Web-as-a-Service *Lite* (Rp 250.000/bulan). Boleh info?",
 		cta: "Mulai Sekarang",
 	},
 	{
@@ -111,7 +111,7 @@ const subscriptionPlans = [
 			{ text: "Traffic unlimited + CDN global", included: true },
 		],
 		waMessage:
-			"Halo PekaDev Studio, saya tertarik Web-as-a-Service *Professional* (Rp 500.000/bulan). Boleh info?",
+			"Halo PekaDev Digital, saya tertarik Web-as-a-Service *Professional* (Rp 500.000/bulan). Boleh info?",
 		cta: "Mulai Growth",
 	},
 	{
@@ -130,13 +130,13 @@ const subscriptionPlans = [
 			{ text: "Multi-region CDN + load balancing", included: true },
 		],
 		waMessage:
-			"Halo PekaDev Studio, saya tertarik Web-as-a-Service *Enterprise Plus* (Rp 1.000.000/bulan). Boleh info?",
+			"Halo PekaDev Digital, saya tertarik Web-as-a-Service *Enterprise Plus* (Rp 1.000.000/bulan). Boleh info?",
 		cta: "Hubungi Sales",
 	},
 ];
 
-const CheckIcon = () => <Check className="w-4 h-4 text-emerald-400" />;
-const XIcon = () => <X className="w-4 h-4 text-slate-500" />;
+const CheckIcon = () => <Check className="w-4 h-4 text-emerald-500" />;
+const XIcon = () => <X className="w-4 h-4 text-slate-350" />;
 
 const WhatsAppIcon = () => (
 	<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
@@ -145,8 +145,6 @@ const WhatsAppIcon = () => (
 );
 
 function PricingCard({ plan, index }) {
-	const [hovered, setHovered] = useState(false);
-
 	const handleWA = () => {
 		const encoded = encodeURIComponent(plan.waMessage);
 		window.open(`https://wa.me/${WA_NUMBER}?text=${encoded}`, "_blank");
@@ -157,16 +155,13 @@ function PricingCard({ plan, index }) {
 			initial={{ opacity: 0, y: 20 }}
 			whileInView={{ opacity: 1, y: 0 }}
 			transition={{ delay: index * 0.1 }}
-			onMouseEnter={() => setHovered(true)}
-			onMouseLeave={() => setHovered(false)}
-			className={`relative rounded-2xl p-8 flex flex-col transition-all duration-200 ${
-				plan.popular
-					? "border-2 border-blue-500 bg-slate-800/60 shadow-lg shadow-blue-500/20"
-					: "border border-slate-700 bg-slate-800/40"
-			} ${hovered ? "transform -translate-y-1 shadow-xl shadow-blue-500/20" : ""}`}
+			className={`relative rounded-2xl p-8 flex flex-col transition-all duration-300 hover:-translate-y-1 ${plan.popular
+				? "border-2 border-blue-500 bg-white shadow-xl shadow-blue-500/10"
+				: "border border-slate-200 bg-slate-50/50 shadow-sm hover:shadow-md hover:border-slate-300"
+				}`}
 		>
 			{plan.popular && (
-				<div className="absolute -top-3 left-8 bg-blue-600 text-white text-xs font-semibold px-3 py-1 rounded-full">
+				<div className="absolute -top-3 left-8 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md shadow-blue-500/20">
 					Paling Populer
 				</div>
 			)}
@@ -174,46 +169,44 @@ function PricingCard({ plan, index }) {
 			{/* Billing type badge */}
 			<div className="mb-3">
 				{plan.billing === "subscription" ? (
-					<span className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+					<span className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-700 border border-emerald-200">
 						Langganan / Bulanan
 					</span>
 				) : (
-					<span className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-blue-500/20 text-blue-400 border border-blue-500/30">
+					<span className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-700 border border-blue-200">
 						One-time Payment
 					</span>
 				)}
 			</div>
 
 			<p
-				className={`text-xs font-bold uppercase tracking-widest mb-3 ${
-					plan.popular ? "text-blue-400" : "text-slate-400"
-				}`}
+				className={`text-xs font-bold uppercase tracking-widest mb-3 ${plan.popular ? "text-blue-600" : "text-slate-500"
+					}`}
 			>
 				{plan.name}
 			</p>
 
 			<div className="mb-2 flex items-baseline gap-1">
-				<span className="text-4xl font-bold text-white">{plan.price}</span>
+				<span className="text-4xl font-extrabold text-slate-800">{plan.price}</span>
 				{plan.period && (
-					<span className="text-sm text-slate-400">{plan.period}</span>
+					<span className="text-sm text-slate-500 font-medium">{plan.period}</span>
 				)}
 				{plan.price !== "Custom" && !plan.period && (
-					<span className="text-sm text-slate-400">/ sekali bayar</span>
+					<span className="text-sm text-slate-500 font-medium">/ sekali bayar</span>
 				)}
 			</div>
 
-			<p className="text-sm text-slate-300 leading-relaxed mb-6">
+			<p className="text-sm text-slate-500 leading-relaxed mb-6 font-medium">
 				{plan.tagline}
 			</p>
 
-			<div className="border-t border-slate-700 pt-5 mb-7 flex flex-col gap-3 flex-1">
+			<div className="border-t border-slate-200 pt-5 mb-7 flex flex-col gap-3 flex-1">
 				{plan.features.map((f, i) => (
 					<div key={i} className="flex items-start gap-3">
 						{f.included ? <CheckIcon /> : <XIcon />}
 						<span
-							className={`text-sm ${
-								f.included ? "text-slate-200" : "text-slate-500"
-							}`}
+							className={`text-sm font-medium ${f.included ? "text-slate-700" : "text-slate-400 line-through decoration-slate-300"
+								}`}
 						>
 							{f.text}
 						</span>
@@ -223,11 +216,10 @@ function PricingCard({ plan, index }) {
 
 			<button
 				onClick={handleWA}
-				className={`flex items-center justify-center gap-2 w-full py-3 px-5 rounded-xl font-semibold transition-all duration-150 ${
-					plan.popular
-						? "bg-blue-600 text-white hover:bg-blue-700 shadow-lg shadow-blue-600/30"
-						: "bg-slate-800 text-white border border-slate-700 hover:bg-slate-700"
-				}`}
+				className={`flex items-center justify-center gap-2 w-full py-3 px-5 rounded-xl font-bold transition-all duration-150 ${plan.popular
+					? "bg-blue-600 text-white hover:bg-blue-700 shadow-lg shadow-blue-600/25"
+					: "bg-slate-100 text-slate-700 border border-slate-200 hover:bg-slate-200 hover:border-slate-350"
+					}`}
 			>
 				<WhatsAppIcon />
 				{plan.cta}
@@ -240,19 +232,19 @@ export default function PricingSection() {
 	const [billingType, setBillingType] = useState("one-time");
 
 	return (
-		<section className="py-20 bg-gradient-to-b from-slate-950 to-slate-900">
+		<section className="py-20 bg-gradient-to-b from-white to-slate-50">
 			<div className="max-w-6xl mx-auto px-6">
 				{/* Header */}
 				<div className="text-center mb-14">
-					<p className="text-xs font-bold uppercase tracking-widest text-blue-400 mb-3">
-						Layanan Kami
+					<p className="text-xs font-bold uppercase tracking-widest text-blue-600 mb-3">
+						Harga Paket
 					</p>
-					<h2 className="text-4xl md:text-5xl font-bold text-white mb-4 leading-tight">
+					<h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-4 leading-tight">
 						Pilih model pembayaran yang tepat
 						<br />
 						untuk kebutuhan Anda
 					</h2>
-					<p className="text-slate-400 text-base max-w-2xl mx-auto leading-relaxed">
+					<p className="text-slate-500 text-base max-w-2xl mx-auto leading-relaxed font-medium">
 						Mulai dari proyek sekali jadi atau langganan berkelanjutan untuk
 						growth bisnis Anda.
 					</p>
@@ -262,21 +254,19 @@ export default function PricingSection() {
 				<div className="flex items-center justify-center gap-4 mb-12">
 					<button
 						onClick={() => setBillingType("one-time")}
-						className={`px-6 py-2.5 rounded-lg font-semibold text-sm transition-all ${
-							billingType === "one-time"
-								? "bg-blue-600 text-white shadow-lg shadow-blue-600/30"
-								: "bg-slate-800 text-slate-400 border border-slate-700 hover:bg-slate-700"
-						}`}
+						className={`px-6 py-2.5 rounded-lg font-bold text-sm transition-all ${billingType === "one-time"
+							? "bg-blue-600 text-white shadow-lg shadow-blue-600/25"
+							: "bg-slate-100 text-slate-500 border border-slate-200 hover:bg-slate-200"
+							}`}
 					>
 						One-time Payment
 					</button>
 					<button
 						onClick={() => setBillingType("subscription")}
-						className={`px-6 py-2.5 rounded-lg font-semibold text-sm transition-all ${
-							billingType === "subscription"
-								? "bg-emerald-600 text-white shadow-lg shadow-emerald-600/30"
-								: "bg-slate-800 text-slate-400 border border-slate-700 hover:bg-slate-700"
-						}`}
+						className={`px-6 py-2.5 rounded-lg font-bold text-sm transition-all ${billingType === "subscription"
+							? "bg-emerald-600 text-white shadow-lg shadow-emerald-600/25"
+							: "bg-slate-100 text-slate-500 border border-slate-200 hover:bg-slate-200"
+							}`}
 					>
 						Web-as-a-Service (Langganan)
 					</button>
@@ -292,12 +282,12 @@ export default function PricingSection() {
 				</div>
 
 				{/* Footer note */}
-				<p className="text-center text-sm text-slate-400">
+				<p className="text-center text-sm text-slate-500 font-medium">
 					{billingType === "one-time"
 						? "Harga belum termasuk biaya revisi di luar kesepakatan. Konsultasi gratis tersedia untuk semua paket."
 						: "WaaS include update, maintenance, dan support. Tidak ada biaya setup tambahan."}
 					<br />
-					<span className="text-blue-400 font-medium">Konsultasi gratis</span>{" "}
+					<span className="text-blue-600 font-bold">Konsultasi gratis</span>{" "}
 					tersedia untuk semua paket.
 				</p>
 			</div>

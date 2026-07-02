@@ -15,7 +15,7 @@ export default function AboutSection() {
   const { ref, isInView } = useScrollReveal()
 
   return (
-    <section id="about" className="relative py-24 lg:py-32 bg-[#060d1f] overflow-hidden">
+    <section id="about" className="relative py-24 lg:py-32 bg-white overflow-hidden">
       <GlowOrb className="w-[400px] h-[400px] -top-20 right-0 opacity-20" />
 
       <div className="max-w-7xl mx-auto px-5 lg:px-8">
@@ -37,12 +37,12 @@ export default function AboutSection() {
               />
             </motion.div>
 
-            <motion.p variants={fadeUp} className="text-white/50 leading-relaxed mb-5 text-sm lg:text-base">
-              PekaDev Studio adalah web development &amp; digital solution agency yang lahir dari
+            <motion.p variants={fadeUp} className="text-slate-600 leading-relaxed mb-5 text-sm lg:text-base">
+              PekaDev Digital adalah web development &amp; digital solution agency yang lahir dari
               Pekalongan untuk membantu bisnis lokal berkembang secara digital. Kami percaya bahwa
               setiap bisnis — sekecil apapun — berhak tampil profesional di dunia digital.
             </motion.p>
-            <motion.p variants={fadeUp} className="text-white/50 leading-relaxed mb-8 text-sm lg:text-base">
+            <motion.p variants={fadeUp} className="text-slate-600 leading-relaxed mb-8 text-sm lg:text-base">
               Tim kami terdiri dari developer dan designer berpengalaman yang telah menangani 50+
               project untuk klien dari berbagai sektor: UMKM, sekolah, klinik, konstruksi, dan
               instansi pemerintahan.
@@ -52,7 +52,7 @@ export default function AboutSection() {
               {TECH_STACK.map((t) => (
                 <span
                   key={t}
-                  className="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-white/60 text-xs font-mono"
+                  className="px-3 py-1.5 rounded-lg bg-slate-50 border border-slate-200/60 text-slate-600 text-xs font-semibold"
                 >
                   {t}
                 </span>
@@ -65,15 +65,15 @@ export default function AboutSection() {
             {ABOUT_CARDS.map((c) => (
               <div
                 key={c.label}
-                className="group p-5 rounded-2xl bg-white/[0.03] border border-white/[0.07] hover:bg-white/[0.06] hover:border-white/15 transition-all duration-300 cursor-default"
+                className="group p-5 rounded-2xl bg-slate-50 border border-slate-100 hover:bg-blue-50/40 hover:border-blue-200/50 transition-all duration-300 cursor-default"
               >
                 <div
-                  className={`w-10 h-10 rounded-xl bg-gradient-to-br ${c.gradient} flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300`}
+                  className={`w-10 h-10 rounded-xl bg-gradient-to-br ${c.gradient} flex items-center justify-center mb-4 shadow-md group-hover:scale-110 transition-transform duration-300`}
                 >
                   <c.icon size={18} className="text-white" />
                 </div>
-                <div className="text-sm font-semibold text-white mb-1">{c.label}</div>
-                <div className="text-xs text-white/40">{c.value}</div>
+                <div className="text-sm font-bold text-slate-800 mb-1">{c.label}</div>
+                <div className="text-xs text-slate-400 font-medium">{c.value}</div>
               </div>
             ))}
           </motion.div>

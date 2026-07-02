@@ -8,7 +8,7 @@ export function useScrollReveal(margin = '-80px') {
 }
 
 export const fadeUp = {
-  hidden: { opacity: 0, y: 40 },
+  hidden: { opacity: 0, y: 15 },
   visible: {
     opacity: 1,
     y: 0,
