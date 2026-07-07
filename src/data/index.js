@@ -66,8 +66,8 @@ export const PORTFOLIO = [
     icon: LayoutDashboard,
     desc: 'Portal manajemen sekolah lengkap dengan fitur akademik, absensi, dan laporan.',
     image: eduConnect,
-    link:'https://demo-admin-dashboard-tan.vercel.app/'
-   
+    link: 'https://demo-admin-dashboard-tan.vercel.app/'
+
   },
   {
     title: 'Batik Nusantara Store',
@@ -77,7 +77,7 @@ export const PORTFOLIO = [
     icon: ShoppingBag,
     desc: 'Toko online UMKM batik dengan fitur katalog produk dan WhatsApp checkout.',
     image: batikImage,
-    link:'https://demo-batik-nusantara.vercel.app/'
+    link: 'https://demo-batik-nusantara.vercel.app/'
   },
   {
     title: 'Ironforge Construction',
@@ -87,9 +87,9 @@ export const PORTFOLIO = [
     icon: Globe,
     desc: 'Website company profile premium untuk kontraktor dengan animasi modern.',
     image: proBuild,
-    link:'https://demo-ui-ironforge.vercel.app//'
+    link: 'https://demo-ui-ironforge.vercel.app//'
   },
-    {
+  {
     title: 'Kenanga Kebaya',
     category: 'Website UMKM',
     tech: ['Laravel', 'MySQL'],
@@ -97,9 +97,9 @@ export const PORTFOLIO = [
     icon: Globe,
     desc: 'Website UMKM untuk brand kebaya dengan desain elegan dan fitur e-commerce.',
     image: Kebaya,
-    link:'https://kebaya-demo.netlify.app/'
+    link: 'https://kebaya-demo.netlify.app/'
   },
-    {
+  {
     title: 'Rental Mobil AutoNusa',
     category: 'Website UMKM',
     tech: ['Laravel', 'MySQL'],
@@ -107,9 +107,9 @@ export const PORTFOLIO = [
     icon: Globe,
     desc: 'Website UMKM untuk layanan rental mobil dengan sistem pemesanan online.',
     image: Rental,
-    link:'https://demo-rental-mobill.netlify.app/'
+    link: 'https://demo-rental-mobill.netlify.app/'
   },
-  
+
 ]
 
 export const WHY_US = [
@@ -152,15 +152,15 @@ export const CONTACT_ITEMS = [
   {
     icon: null, // imported in component
     label: 'WhatsApp',
-    value: '+62 812-XXXX-XXXX',
-    href: 'https://wa.me/62812xxxxxxxx?text=Halo%20PekaDev%20Studio',
+    value: '+62 819-9135-6251',
+    href: 'https://wa.me/6281991356251?text=Halo%20PekaDev%20Studio',
     gradient: 'from-green-600 to-emerald-400',
     iconName: 'MessageCircle',
   },
   {
     label: 'Email',
-    value: 'hello@pekadev.id',
-    href: 'mailto:hello@pekadev.id',
+    value: 'pekadevstudio@gmail.com',
+    href: 'mailto:pekadevstudio@gmail.com',
     gradient: 'from-blue-600 to-blue-400',
     iconName: 'Mail',
   },
@@ -197,12 +197,12 @@ export const ABOUT_CARDS = [
 export const CLIENTS = [
 
 
-  { abbr: 'SMK', name: 'SMK Islam Nusantara Comal',      cat: 'Pendidikan',   color: 'green' },
+  { abbr: 'SMK', name: 'SMK Islam Nusantara Comal', cat: 'Pendidikan', color: 'green' },
 
-  { abbr: 'BTK', name: 'Batik Trusmi Store',        cat: 'UMKM',         color: 'amber' },
-  { abbr: 'KUE', name: 'Dapur Mbak Yuli',           cat: 'UMKM',         color: 'amber' },
-  { abbr: 'CVS', name: 'CV Sejahtera Jaya',         cat: 'Perusahaan',   color: 'cyan' },
-  { abbr: 'UMKM',  name: 'Kemuning Catering Batang',     cat: 'UMKM',   color: 'cyan' },
+  { abbr: 'BTK', name: 'Batik Trusmi Store', cat: 'UMKM', color: 'amber' },
+  { abbr: 'KUE', name: 'Dapur Mbak Yuli', cat: 'UMKM', color: 'amber' },
+  { abbr: 'CVS', name: 'CV Sejahtera Jaya', cat: 'Perusahaan', color: 'cyan' },
+  { abbr: 'UMKM', name: 'Kemuning Catering Batang', cat: 'UMKM', color: 'cyan' },
 ]
 
 

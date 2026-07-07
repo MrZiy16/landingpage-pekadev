@@ -3,7 +3,7 @@ import React from "react";
 import { MessageCircle } from "lucide-react";
 
 const WhatsAppBubble = () => {
-  const phoneNumber = "6285119134240"; // ganti dengan nomor WhatsApp kamu
+  const phoneNumber = "6281991356251"; // ganti dengan nomor WhatsApp kamu
   const message = "Halo, saya ingin konsultasi project website";
 
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(

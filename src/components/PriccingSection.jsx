@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Check, X } from "lucide-react";
 
-const WA_NUMBER = "6285119134240";
+const WA_NUMBER = "6281991356251";
 
 const plans = [
 	{
