@@ -1,296 +1,227 @@
-import { useState } from "react";
-import { motion } from "framer-motion";
-import { Check, X } from "lucide-react";
+import { motion, useReducedMotion } from 'framer-motion'
+import { Check, ArrowRight } from 'lucide-react'
 
-const WA_NUMBER = "6289630961201";
+// ====== EDIT BAGIAN INI ======
+const WA_NUMBER = '6289630961201'
 
-const plans = [
+const PLANS = [
 	{
-		name: "Tugas Mahasiswa",
-		price: "Start From Rp 80K",
-		billing: "one-time",
-		tagline: "Solusi cepat untuk tugas kuliah, skripsi, dan proyek akademik.",
-		popular: false,
+		name: 'Starter',
+		price: 'Rp 1.489.000',
+		note: 'sekali bayar',
+		tagline: 'Untuk UMKM dan usaha rintisan yang baru mulai online.',
 		features: [
-			{ text: "Website/Aplikasi sederhana", included: true },
-			{ text: "Konsultasi teknis", included: true },
-			{ text: "Source code lengkap", included: true },
-			{ text: "Support 1 minggu", included: true },
-			{ text: "Revisi unlimited", included: false },
+			'Landing page maksimal 3 halaman',
+			'Desain responsif (nyaman di HP)',
+			'Domain dan hosting 1 tahun',
 		],
-		waMessage:
-			"Halo PekaDev Digital, saya butuh bantuan tugas kuliah/skripsi. Paket Tugas Mahasiswa (Rp 70.000) tersedia?",
-		cta: "Mulai dari Rp 80K",
+		cta: 'Pilih Starter',
+		waMessage: 'Halo PekaDev Studio, saya tertarik dengan paket Starter (Rp 1.489.000). Boleh info lebih lanjut?',
 	},
 	{
-		name: "Starter",
-		price: "Rp 1.489.000",
-		billing: "one-time",
-		tagline: "Ideal untuk UMKM dan usaha rintisan.",
-		popular: false,
+		name: 'Pro',
+		price: 'Rp 3.500.000',
+		note: 'sekali bayar',
+		tagline: 'Untuk perusahaan, sekolah, dan instansi yang butuh website lengkap.',
 		features: [
-			{ text: "Landing page max 3 halaman", included: true },
-			{ text: "Desain responsif (mobile)", included: true },
-			{ text: "Domain + hosting 1 tahun", included: true },
-			{ text: "Sistem manajemen konten", included: false },
-			{ text: "Integrasi payment gateway", included: false },
+			'Website multi-halaman (sampai 10)',
+			'Desain responsif (nyaman di HP)',
+			'Domain dan hosting 1 tahun',
+			'Bisa edit konten sendiri (CMS)',
 		],
-		waMessage:
-			"Halo PekaDev Digital, saya tertarik dengan paket *Starter* (Rp 1.489.000). Boleh info lebih lanjut?",
-		cta: "Mulai dengan Starter",
+		cta: 'Pilih Pro',
+		recommended: true,
+		waMessage: 'Halo PekaDev Studio, saya tertarik dengan paket Pro (Rp 3.500.000). Boleh info lebih lanjut?',
 	},
 	{
-		name: "Pro",
-		price: "Rp 3.500.000",
-		billing: "one-time",
-		tagline: "Cocok untuk perusahaan, sekolah, dan instansi.",
-		popular: true,
+		name: 'Custom',
+		price: 'Sesuai kebutuhan',
+		note: 'harga dibahas setelah konsultasi',
+		tagline: 'Untuk toko online dan sistem khusus.',
 		features: [
-			{ text: "Website multi-halaman (hingga 10)", included: true },
-			{ text: "Desain responsif (mobile)", included: true },
-			{ text: "Domain + hosting 1 tahun", included: true },
-			{ text: "Sistem manajemen konten", included: true },
-			{ text: "Integrasi payment gateway", included: false },
+			'Jumlah halaman tidak dibatasi',
+			'Pembayaran online (payment gateway)',
+			'Domain dan hosting 1 tahun',
+			'Bisa edit konten sendiri (CMS)',
 		],
-		waMessage:
-			"Halo PekaDev Digital, saya tertarik dengan paket *Pro* (Rp 3.500.000). Boleh info lebih lanjut?",
-		cta: "Mulai dengan Pro",
+		cta: 'Diskusi kebutuhan',
+		waMessage: 'Halo PekaDev Studio, saya ingin konsultasi soal website custom / toko online. Boleh dibantu?',
 	},
-	{
-		name: "Enterprise",
-		price: "Custom",
-		billing: "one-time",
-		tagline: "Solusi penuh untuk kebutuhan enterprise dan e-commerce.",
-		popular: false,
-		features: [
-			{ text: "Website tak terbatas halaman", included: true },
-			{ text: "Desain responsif (mobile)", included: true },
-			{ text: "Domain + hosting 1 tahun", included: true },
-			{ text: "Sistem manajemen konten", included: true },
-			{ text: "Integrasi payment gateway", included: true },
-		],
-		waMessage:
-			"Halo PekaDev Digital, saya ingin konsultasi mengenai paket *Enterprise*. Boleh dibantu?",
-		cta: "Hubungi Kami",
-	},
-];
+]
 
-const subscriptionPlans = [
-	{
-		name: "Lite",
-		price: "Rp 250.000",
-		billing: "subscription",
-		period: "/bulan",
-		tagline: "Maintenance & support untuk website existing.",
-		popular: false,
-		features: [
-			{ text: "Uptime monitoring 99.9%", included: true },
-			{ text: "Security updates otomatis", included: true },
-			{ text: "Backup harian", included: true },
-			{ text: "Fast response support", included: true },
-			{ text: "Minor updates (max 4jam/bulan)", included: true },
-			{ text: "Traffic unlimited", included: false },
-		],
-		waMessage:
-			"Halo PekaDev Digital, saya tertarik Web-as-a-Service *Lite* (Rp 250.000/bulan). Boleh info?",
-		cta: "Mulai Sekarang",
-	},
-	{
-		name: "Professional",
-		price: "Rp 500.000",
-		billing: "subscription",
-		period: "/bulan",
-		tagline: "Growth support untuk UMKM yang berkembang.",
-		popular: true,
-		features: [
-			{ text: "Uptime monitoring 99.9%", included: true },
-			{ text: "Security updates otomatis", included: true },
-			{ text: "Backup real-time", included: true },
-			{ text: "Priority support (response < 2jam)", included: true },
-			{ text: "Updates & improvements unlimited", included: true },
-			{ text: "Traffic unlimited + CDN global", included: true },
-		],
-		waMessage:
-			"Halo PekaDev Digital, saya tertarik Web-as-a-Service *Professional* (Rp 500.000/bulan). Boleh info?",
-		cta: "Mulai Growth",
-	},
-	{
-		name: "Enterprise Plus",
-		price: "Rp 1.000.000",
-		billing: "subscription",
-		period: "/bulan",
-		tagline: "Full management untuk perusahaan besar.",
-		popular: false,
-		features: [
-			{ text: "Uptime monitoring 99.99%", included: true },
-			{ text: "Security updates + penetration testing", included: true },
-			{ text: "Backup real-time + disaster recovery", included: true },
-			{ text: "Dedicated account manager", included: true },
-			{ text: "Custom features & scaling unlimited", included: true },
-			{ text: "Multi-region CDN + load balancing", included: true },
-		],
-		waMessage:
-			"Halo PekaDev Digital, saya tertarik Web-as-a-Service *Enterprise Plus* (Rp 1.000.000/bulan). Boleh info?",
-		cta: "Hubungi Sales",
-	},
-];
+const MAINTENANCE = {
+	price: 'Rp 250.000',
+	period: '/bulan',
+	features: [
+		'Backup rutin',
+		'Update keamanan',
+		'Pemantauan website',
+		'Edit kecil, sampai 4 jam per bulan',
+	],
+	waMessage: 'Halo PekaDev Studio, saya tertarik paket perawatan bulanan (Rp 250.000/bulan). Boleh info?',
+}
 
-const CheckIcon = () => <Check className="w-4 h-4 text-emerald-500" />;
-const XIcon = () => <X className="w-4 h-4 text-slate-350" />;
+const STUDENT = {
+	price: 'Rp 80.000',
+	waMessage: 'Halo PekaDev Studio, saya butuh bantuan tugas kuliah/skripsi. Paket mulai Rp 80.000 masih tersedia?',
+}
+// =============================
 
-const WhatsAppIcon = () => (
-	<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-		<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-	</svg>
-);
+const waLink = (msg) => `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`
 
-function PricingCard({ plan, index }) {
-	const handleWA = () => {
-		const encoded = encodeURIComponent(plan.waMessage);
-		window.open(`https://wa.me/${WA_NUMBER}?text=${encoded}`, "_blank");
-	};
+const KAWUNG = `<svg xmlns='http://www.w3.org/2000/svg' width='72' height='72' viewBox='0 0 72 72'><g fill='none' stroke='#0891B2' stroke-width='1.4'><ellipse cx='36' cy='18' rx='9' ry='18'/><ellipse cx='36' cy='54' rx='9' ry='18'/><ellipse cx='18' cy='36' rx='18' ry='9'/><ellipse cx='54' cy='36' rx='18' ry='9'/></g></svg>`
+const KAWUNG_URL = `url("data:image/svg+xml,${encodeURIComponent(KAWUNG)}")`
+
+function PlanCard({ plan, index, reduceMotion }) {
+	const dark = plan.recommended
+	const reveal = reduceMotion
+		? {}
+		: {
+			initial: { opacity: 0, y: 16 },
+			whileInView: { opacity: 1, y: 0 },
+			viewport: { once: true, amount: 0.2 },
+			transition: { duration: 0.5, delay: index * 0.1, ease: 'easeOut' },
+		}
 
 	return (
 		<motion.div
-			initial={{ opacity: 0, y: 20 }}
-			whileInView={{ opacity: 1, y: 0 }}
-			transition={{ delay: index * 0.1 }}
-			className={`relative rounded-2xl p-8 flex flex-col transition-all duration-300 hover:-translate-y-1 ${plan.popular
-				? "border-2 border-blue-500 bg-white shadow-xl shadow-blue-500/10"
-				: "border border-slate-200 bg-slate-50/50 shadow-sm hover:shadow-md hover:border-slate-300"
+			{...reveal}
+			className={`relative flex flex-col rounded-2xl p-8 ${dark
+					? 'bg-[#0B2540] text-white shadow-[0_24px_60px_rgba(11,37,64,0.35)] lg:-translate-y-3'
+					: 'bg-white text-[#0B2540] border border-cyan-900/10 shadow-[0_8px_28px_rgba(11,37,64,0.06)]'
 				}`}
 		>
-			{plan.popular && (
-				<div className="absolute -top-3 left-8 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md shadow-blue-500/20">
-					Paling Populer
+			{dark && (
+				<div className="absolute -top-3 left-8 bg-[#22D3EE] text-[#0B2540] text-xs font-bold px-3 py-1 rounded-full">
+					Direkomendasikan
 				</div>
 			)}
 
-			{/* Billing type badge */}
-			<div className="mb-3">
-				{plan.billing === "subscription" ? (
-					<span className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-700 border border-emerald-200">
-						Langganan / Bulanan
-					</span>
-				) : (
-					<span className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-700 border border-blue-200">
-						One-time Payment
-					</span>
-				)}
-			</div>
+			<h3 className="text-lg font-bold mb-4">{plan.name}</h3>
 
-			<p
-				className={`text-xs font-bold uppercase tracking-widest mb-3 ${plan.popular ? "text-blue-600" : "text-slate-500"
-					}`}
-			>
-				{plan.name}
-			</p>
+			<div className="text-3xl sm:text-[34px] font-extrabold tracking-tight leading-none mb-1.5">{plan.price}</div>
+			<div className={`text-xs font-medium mb-5 ${dark ? 'text-cyan-100/70' : 'text-slate-400'}`}>{plan.note}</div>
 
-			<div className="mb-2 flex items-baseline gap-1">
-				<span className="text-4xl font-extrabold text-slate-800">{plan.price}</span>
-				{plan.period && (
-					<span className="text-sm text-slate-500 font-medium">{plan.period}</span>
-				)}
-				{plan.price !== "Custom" && !plan.period && (
-					<span className="text-sm text-slate-500 font-medium">/ sekali bayar</span>
-				)}
-			</div>
+			<p className={`text-sm leading-relaxed mb-6 ${dark ? 'text-cyan-50/80' : 'text-slate-500'}`}>{plan.tagline}</p>
 
-			<p className="text-sm text-slate-500 leading-relaxed mb-6 font-medium">
-				{plan.tagline}
-			</p>
-
-			<div className="border-t border-slate-200 pt-5 mb-7 flex flex-col gap-3 flex-1">
-				{plan.features.map((f, i) => (
-					<div key={i} className="flex items-start gap-3">
-						{f.included ? <CheckIcon /> : <XIcon />}
+			<ul className={`flex flex-col gap-3 pt-6 mb-8 flex-1 border-t ${dark ? 'border-white/15' : 'border-slate-200'}`}>
+				{plan.features.map((f) => (
+					<li key={f} className="flex items-start gap-3 text-sm">
 						<span
-							className={`text-sm font-medium ${f.included ? "text-slate-700" : "text-slate-400 line-through decoration-slate-300"
+							className={`mt-0.5 flex w-5 h-5 shrink-0 items-center justify-center rounded-full ${dark ? 'bg-[#22D3EE] text-[#0B2540]' : 'bg-cyan-50 text-[#0E7490]'
 								}`}
 						>
-							{f.text}
+							<Check size={12} strokeWidth={3} />
 						</span>
-					</div>
+						<span className={dark ? 'text-white/90' : 'text-slate-700'}>{f}</span>
+					</li>
 				))}
-			</div>
+			</ul>
 
-			<button
-				onClick={handleWA}
-				className={`flex items-center justify-center gap-2 w-full py-3 px-5 rounded-xl font-bold transition-all duration-150 ${plan.popular
-					? "bg-blue-600 text-white hover:bg-blue-700 shadow-lg shadow-blue-600/25"
-					: "bg-slate-100 text-slate-700 border border-slate-200 hover:bg-slate-200 hover:border-slate-350"
+			<a
+				href={waLink(plan.waMessage)}
+				target="_blank"
+				rel="noopener noreferrer"
+				className={`group inline-flex items-center justify-center gap-2 w-full py-3.5 px-5 rounded-lg font-bold text-sm transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 ${dark
+						? 'bg-[#22D3EE] text-[#0B2540] hover:bg-[#67E8F9] focus-visible:outline-white'
+						: 'bg-[#0E7490] text-white hover:bg-[#0B5F77] focus-visible:outline-[#0B2540]'
 					}`}
 			>
-				<WhatsAppIcon />
 				{plan.cta}
-			</button>
+				<ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
+			</a>
 		</motion.div>
-	);
+	)
 }
 
 export default function PricingSection() {
-	const [billingType, setBillingType] = useState("one-time");
+	const reduceMotion = useReducedMotion()
 
 	return (
-		<section id="pricing" className="py-20 bg-gradient-to-b from-white to-slate-50">
-			<div className="max-w-6xl mx-auto px-6">
-				{/* Header */}
-				<div className="text-center mb-14">
-					<p className="text-xs font-bold uppercase tracking-widest text-blue-600 mb-3">
-						Harga Paket
-					</p>
-					<h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-4 leading-tight">
-						Pilih model pembayaran yang tepat
-						<br />
-						untuk kebutuhan Anda
+		<section
+			id="pricing"
+			className="relative py-24 lg:py-32 overflow-hidden"
+			style={{
+				fontFamily: "'Plus Jakarta Sans', sans-serif",
+				background: 'linear-gradient(180deg, #ecfafd 0%, #ffffff 100%)',
+			}}
+		>
+			<div
+				aria-hidden="true"
+				className="absolute top-0 left-0 w-3/5 h-[360px] pointer-events-none"
+				style={{
+					backgroundImage: KAWUNG_URL,
+					backgroundSize: '72px 72px',
+					opacity: 0.25,
+					WebkitMaskImage: 'linear-gradient(to bottom right, black 20%, transparent 70%)',
+					maskImage: 'linear-gradient(to bottom right, black 20%, transparent 70%)',
+				}}
+			/>
+
+			<div className="relative max-w-6xl mx-auto px-6 sm:px-10">
+				<div className="max-w-2xl mb-14">
+					<h2 className="text-4xl sm:text-5xl font-extrabold text-[#0B2540] leading-[1.06] tracking-[-0.025em] mb-5">
+						Harga yang jelas dari awal.
 					</h2>
-					<p className="text-slate-500 text-base max-w-2xl mx-auto leading-relaxed font-medium">
-						Mulai dari proyek sekali jadi atau langganan berkelanjutan untuk
-						growth bisnis Anda.
+					<p className="text-slate-600 text-base sm:text-lg leading-relaxed">
+						Pilih paket pembuatan website. Perawatan bulanan bisa ditambahkan kapan saja.
 					</p>
 				</div>
 
-				{/* Toggle buttons */}
-				<div className="flex items-center justify-center gap-4 mb-12">
-					<button
-						onClick={() => setBillingType("one-time")}
-						className={`px-6 py-2.5 rounded-lg font-bold text-sm transition-all ${billingType === "one-time"
-							? "bg-blue-600 text-white shadow-lg shadow-blue-600/25"
-							: "bg-slate-100 text-slate-500 border border-slate-200 hover:bg-slate-200"
-							}`}
-					>
-						One-time Payment
-					</button>
-					<button
-						onClick={() => setBillingType("subscription")}
-						className={`px-6 py-2.5 rounded-lg font-bold text-sm transition-all ${billingType === "subscription"
-							? "bg-emerald-600 text-white shadow-lg shadow-emerald-600/25"
-							: "bg-slate-100 text-slate-500 border border-slate-200 hover:bg-slate-200"
-							}`}
-					>
-						Web-as-a-Service (Langganan)
-					</button>
+				{/* Paket pembuatan */}
+				<div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 items-stretch mb-12">
+					{PLANS.map((p, i) => (
+						<PlanCard key={p.name} plan={p} index={i} reduceMotion={reduceMotion} />
+					))}
 				</div>
 
-				{/* Cards */}
-				<div className={`grid gap-6 items-start mb-8 ${billingType === 'one-time' ? 'md:grid-cols-2 lg:grid-cols-4' : 'md:grid-cols-3'}`}>
-					{(billingType === "one-time" ? plans : subscriptionPlans).map(
-						(plan, i) => (
-							<PricingCard key={plan.name} plan={plan} index={i} />
-						)
-					)}
+				{/* Perawatan bulanan */}
+				<div className="rounded-2xl bg-white border border-cyan-900/10 border-l-4 border-l-[#22D3EE] p-8 grid lg:grid-cols-[1fr_1.2fr_auto] gap-8 items-center shadow-[0_8px_28px_rgba(11,37,64,0.06)] mb-6">
+					<div>
+						<h3 className="text-lg font-bold text-[#0B2540] mb-2">Perawatan bulanan</h3>
+						<div className="flex items-baseline gap-1">
+							<span className="text-3xl font-extrabold text-[#0B2540] tracking-tight">{MAINTENANCE.price}</span>
+							<span className="text-sm text-slate-500 font-medium">{MAINTENANCE.period}</span>
+						</div>
+					</div>
+					<ul className="grid sm:grid-cols-2 gap-x-6 gap-y-2.5">
+						{MAINTENANCE.features.map((f) => (
+							<li key={f} className="flex items-start gap-2.5 text-sm text-slate-700">
+								<Check size={16} strokeWidth={3} className="mt-0.5 shrink-0 text-[#0E7490]" />
+								{f}
+							</li>
+						))}
+					</ul>
+					<a
+						href={waLink(MAINTENANCE.waMessage)}
+						target="_blank"
+						rel="noopener noreferrer"
+						className="inline-flex items-center justify-center px-6 py-3.5 rounded-lg border-2 border-[#0E7490] text-[#0E7490] font-bold text-sm transition-colors hover:bg-[#0E7490] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0B2540]"
+					>
+						Tambah perawatan
+					</a>
 				</div>
 
-				{/* Footer note */}
-				<p className="text-center text-sm text-slate-500 font-medium">
-					{billingType === "one-time"
-						? "Harga belum termasuk biaya revisi di luar kesepakatan. Konsultasi gratis tersedia untuk semua paket."
-						: "WaaS include update, maintenance, dan support. Tidak ada biaya setup tambahan."}
-					<br />
-					<span className="text-blue-600 font-bold">Konsultasi gratis</span>{" "}
-					tersedia untuk semua paket.
+				{/* Tugas kuliah, dipisah dari paket bisnis */}
+				<div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 rounded-xl border border-dashed border-cyan-900/25 px-6 py-4 mb-8">
+					<p className="text-sm text-slate-600">
+						Mahasiswa butuh bantuan tugas, skripsi, atau proyek akademik? Mulai dari{' '}
+						<span className="font-bold text-[#0B2540]">{STUDENT.price}</span>.
+					</p>
+					<a
+						href={waLink(STUDENT.waMessage)}
+						target="_blank"
+						rel="noopener noreferrer"
+						className="text-sm font-bold text-[#0B2540] underline underline-offset-4 decoration-[#22D3EE] decoration-2 hover:decoration-[#0B2540] transition-colors whitespace-nowrap"
+					>
+						Tanya lewat WhatsApp
+					</a>
+				</div>
+
+				<p className="text-sm text-slate-500">
+					Konsultasi gratis untuk semua paket. Harga belum termasuk revisi di luar kesepakatan.
 				</p>
 			</div>
 		</section>
-	);
+	)
 }

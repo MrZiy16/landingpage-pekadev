@@ -5,7 +5,7 @@ import { ArrowRight } from 'lucide-react'
 // ====== EDIT BAGIAN INI ======
 const WA_NUMBER = '6289630961201' // nomor WA lo, format 62..., tanpa + atau 0 di depan
 const WA_TEXT = 'Halo, saya tertarik minta contoh tampilan website untuk usaha saya.'
-const PREVIEW_SRC = '/hero-preview.webp' // screenshot project asli, rasio ~16:10
+const PREVIEW_SRC = '../assets/batik.png'  // screenshot project asli, rasio ~16:10
 const PREVIEW_ALT = 'Tampilan website hasil kerja PekaDev Studio'
 const PREVIEW_URL = 'pekatools.web.id'
 const POINTS = [
