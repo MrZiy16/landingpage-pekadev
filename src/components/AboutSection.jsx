@@ -5,10 +5,10 @@ import { useScrollReveal, fadeUp, stagger } from '../hooks/useScrollReveal'
 import { TECH_STACK } from '../data'
 
 const ABOUT_CARDS = [
-  { icon: Code2,      label: 'Clean Code',   value: 'Best Practice',  gradient: 'from-blue-600 to-blue-400' },
-  { icon: Smartphone, label: 'Responsive',   value: 'All Devices',    gradient: 'from-cyan-600 to-blue-400' },
-  { icon: Zap,        label: 'Fast Loading', value: '< 2s Load Time', gradient: 'from-indigo-600 to-blue-400' },
-  { icon: Shield,     label: 'Secure',       value: 'SSL & Firewall', gradient: 'from-blue-700 to-cyan-500' },
+  { icon: Code2, label: 'Clean Code', value: 'Best Practice', gradient: 'from-blue-600 to-blue-400' },
+  { icon: Smartphone, label: 'Responsive', value: 'All Devices', gradient: 'from-cyan-600 to-blue-400' },
+  { icon: Zap, label: 'Fast Loading', value: '< 2s Load Time', gradient: 'from-indigo-600 to-blue-400' },
+  { icon: Shield, label: 'Secure', value: 'SSL & Firewall', gradient: 'from-blue-700 to-cyan-500' },
 ]
 
 export default function AboutSection() {
@@ -38,14 +38,10 @@ export default function AboutSection() {
             </motion.div>
 
             <motion.p variants={fadeUp} className="text-slate-600 leading-relaxed mb-5 text-sm lg:text-base">
-              PekaDev Digital adalah web development &amp; digital solution agency yang lahir dari
-              Pekalongan untuk membantu bisnis lokal berkembang secara digital. Kami percaya bahwa
-              setiap bisnis — sekecil apapun — berhak tampil profesional di dunia digital.
+              PekaDev Studio saya jalankan untuk membantu usaha lokal punya website yang rapi dan mudah ditemukan pelanggan. Setiap usaha, sekecil apa pun, pantas tampil profesional di internet.
             </motion.p>
             <motion.p variants={fadeUp} className="text-slate-600 leading-relaxed mb-8 text-sm lg:text-base">
-              Tim kami terdiri dari developer dan designer berpengalaman yang telah menangani 50+
-              project untuk klien dari berbagai sektor: UMKM, sekolah, klinik, konstruksi, dan
-              instansi pemerintahan.
+              Anda berurusan langsung dengan saya, dari obrolan pertama sampai website tayang. Istilah teknis akan saya jelaskan dengan bahasa biasa.
             </motion.p>
 
             <motion.div variants={fadeUp} className="flex flex-wrap gap-2.5">

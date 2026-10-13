@@ -58,9 +58,9 @@ export default function Navbar() {
           <div className="w-8 h-8 flex items-center justify-center overflow-hidden">
             <img src={logo} alt="PekaDev Logo" className="w-full h-full object-contain" />
           </div>
-          <span className={`font-bold text-lg tracking-tight transition-colors duration-300 ${scrolled ? 'text-slate-800' : 'text-black'}`}>
+          <span className={`font-bold text-lg tracking-tight transition-colors duration-300 ${scrolled ? 'text-slate-800' : 'text-slate-900'}`}>
             Peka<span className="text-blue-500">Dev</span>
-            <span className={`font-light ml-1 text-sm transition-colors duration-300 ${scrolled ? 'text-slate-400' : 'text-white/50'}`}>Digital</span>
+            <span className={`font-light ml-1 text-sm transition-colors duration-300 ${scrolled ? 'text-slate-400' : 'text-slate-400'}`}>Digital</span>
           </span>
         </button>
 
@@ -70,7 +70,7 @@ export default function Navbar() {
             <button
               key={l.label}
               onClick={() => handleNav(l.href)}
-              className={`px-4 py-2 text-sm rounded-lg transition-all duration-200 ${scrolled ? 'text-slate-500 hover:text-slate-900 hover:bg-blue-50' : 'text-white/60 hover:text-white hover:bg-white/5'}`}
+              className={`px-4 py-2 text-sm rounded-lg transition-all duration-200 ${scrolled ? 'text-slate-500 hover:text-slate-900 hover:bg-blue-50' : 'text-slate-500 hover:text-slate-900 hover:bg-slate-100'}`}
             >
               {l.label}
             </button>
@@ -83,7 +83,7 @@ export default function Navbar() {
         {/* Mobile Toggle */}
         <button
           onClick={() => setOpen(!open)}
-          className={`md:hidden p-2 rounded-lg transition-all ${scrolled ? 'text-slate-500 hover:text-slate-900 hover:bg-blue-50' : 'text-white/60 hover:text-white hover:bg-white/5'}`}
+          className={`md:hidden p-2 rounded-lg transition-all ${scrolled ? 'text-slate-500 hover:text-slate-900 hover:bg-blue-50' : 'text-slate-500 hover:text-slate-900 hover:bg-slate-100'}`}
           aria-label="Toggle menu"
         >
           {open ? <X size={20} /> : <Menu size={20} />}

@@ -152,9 +152,8 @@ export default function ProcessSection() {
                 <motion.div
                   key={s.number}
                   variants={fadeUp}
-                  className={`relative flex flex-col lg:flex-row items-start lg:items-center gap-4 lg:gap-0 ${
-                    isLeft ? 'lg:flex-row' : 'lg:flex-row-reverse'
-                  } lg:mb-10`}
+                  className={`relative flex flex-col lg:flex-row items-start lg:items-center gap-4 lg:gap-0 ${isLeft ? 'lg:flex-row' : 'lg:flex-row-reverse'
+                    } lg:mb-10`}
                 >
                   {/* Card */}
                   <div className={`w-full lg:w-[calc(50%-40px)] ${isLeft ? 'lg:pr-8' : 'lg:pl-8'}`}>

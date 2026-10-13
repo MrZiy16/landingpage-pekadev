@@ -48,7 +48,7 @@ export default function Footer() {
             <h4 className="text-white text-sm font-semibold mb-5">Kontak</h4>
             <div className="flex flex-col gap-3">
               <a
-                href="mailto:hello@pekadev.id"
+                href="mailto:pekadevstudio@gmail.com"
                 className="flex items-center gap-2.5 text-slate-400 hover:text-white text-sm transition-colors duration-200 font-medium"
               >
                 <Mail size={14} />

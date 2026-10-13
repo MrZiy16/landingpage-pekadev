@@ -3,7 +3,7 @@ import React from "react";
 import { MessageCircle } from "lucide-react";
 
 const WhatsAppBubble = () => {
-  const phoneNumber = "6281991356251"; // ganti dengan nomor WhatsApp kamu
+  const phoneNumber = "6289630961201"; // ganti dengan nomor WhatsApp kamu
   const message = "Halo, saya ingin konsultasi project website";
 
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
@@ -22,8 +22,11 @@ const WhatsAppBubble = () => {
         Konsultasi Gratis via WhatsApp
       </div>
 
+      {/* Ping ring */}
+      <div className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 animate-ping opacity-20" />
+
       {/* Bubble */}
-      <div className="w-16 h-16 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 flex items-center justify-center shadow-[0_0_30px_rgba(34,211,238,0.35)] hover:scale-110 transition-all duration-300 animate-pulse">
+      <div className="relative w-16 h-16 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 flex items-center justify-center shadow-[0_0_30px_rgba(34,211,238,0.25)] hover:scale-110 hover:shadow-[0_0_40px_rgba(34,211,238,0.4)] transition-all duration-300">
         <MessageCircle className="text-white" size={30} />
       </div>
     </a>

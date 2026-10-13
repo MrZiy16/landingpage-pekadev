@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Check, X } from "lucide-react";
 
-const WA_NUMBER = "6281991356251";
+const WA_NUMBER = "6289630961201";
 
 const plans = [
 	{
@@ -20,23 +20,23 @@ const plans = [
 		],
 		waMessage:
 			"Halo PekaDev Digital, saya butuh bantuan tugas kuliah/skripsi. Paket Tugas Mahasiswa (Rp 70.000) tersedia?",
-		cta: "Mulai dari Rp 70K",
+		cta: "Mulai dari Rp 80K",
 	},
 	{
 		name: "Starter",
-		price: "Rp 850.000",
+		price: "Rp 1.489.000",
 		billing: "one-time",
 		tagline: "Ideal untuk UMKM dan usaha rintisan.",
 		popular: false,
 		features: [
-			{ text: "Landing page 1 halaman", included: true },
+			{ text: "Landing page max 3 halaman", included: true },
 			{ text: "Desain responsif (mobile)", included: true },
 			{ text: "Domain + hosting 1 tahun", included: true },
 			{ text: "Sistem manajemen konten", included: false },
 			{ text: "Integrasi payment gateway", included: false },
 		],
 		waMessage:
-			"Halo PekaDev Digital, saya tertarik dengan paket *Starter* (Rp 1.000.000). Boleh info lebih lanjut?",
+			"Halo PekaDev Digital, saya tertarik dengan paket *Starter* (Rp 1.489.000). Boleh info lebih lanjut?",
 		cta: "Mulai dengan Starter",
 	},
 	{
@@ -232,7 +232,7 @@ export default function PricingSection() {
 	const [billingType, setBillingType] = useState("one-time");
 
 	return (
-		<section className="py-20 bg-gradient-to-b from-white to-slate-50">
+		<section id="pricing" className="py-20 bg-gradient-to-b from-white to-slate-50">
 			<div className="max-w-6xl mx-auto px-6">
 				{/* Header */}
 				<div className="text-center mb-14">
@@ -273,7 +273,7 @@ export default function PricingSection() {
 				</div>
 
 				{/* Cards */}
-				<div className="grid md:grid-cols-3 gap-6 items-start mb-8">
+				<div className={`grid gap-6 items-start mb-8 ${billingType === 'one-time' ? 'md:grid-cols-2 lg:grid-cols-4' : 'md:grid-cols-3'}`}>
 					{(billingType === "one-time" ? plans : subscriptionPlans).map(
 						(plan, i) => (
 							<PricingCard key={plan.name} plan={plan} index={i} />

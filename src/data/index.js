@@ -8,12 +8,12 @@ import eduConnect from '../assets/educonnect.png';
 import proBuild from '../assets/probuild.png';
 import Kebaya from '../assets/kebaya.png';
 import Rental from '../assets/rental.png';
-import { link } from 'framer-motion/client';
 
 export const NAV_LINKS = [
   { label: 'Beranda', href: '#hero' },
   { label: 'Tentang', href: '#about' },
   { label: 'Layanan', href: '#services' },
+  { label: 'Harga', href: '#pricing' },
   { label: 'Portfolio', href: '#portfolio' },
   { label: 'Kontak', href: '#contact' },
 ]
@@ -195,14 +195,16 @@ export const ABOUT_CARDS = [
   { icon: Shield, label: 'Secure', value: 'SSL & Firewall', gradient: 'from-blue-700 to-cyan-500' },
 ]
 export const CLIENTS = [
-
-
   { abbr: 'SMK', name: 'SMK Islam Nusantara Comal', cat: 'Pendidikan', color: 'green' },
-
   { abbr: 'BTK', name: 'Batik Trusmi Store', cat: 'UMKM', color: 'amber' },
   { abbr: 'KUE', name: 'Dapur Mbak Yuli', cat: 'UMKM', color: 'amber' },
   { abbr: 'CVS', name: 'CV Sejahtera Jaya', cat: 'Perusahaan', color: 'cyan' },
   { abbr: 'UMKM', name: 'Kemuning Catering Batang', cat: 'UMKM', color: 'cyan' },
+  { abbr: 'SMP', name: 'SMP Terpadu Pekalongan', cat: 'Pendidikan', color: 'green' },
+  { abbr: 'IFC', name: 'Ironforge Construction', cat: 'Perusahaan', color: 'blue' },
+  { abbr: 'KBY', name: 'Kenanga Kebaya', cat: 'UMKM', color: 'purple' },
+  { abbr: 'RNT', name: 'AutoNusa Rental Mobil', cat: 'UMKM', color: 'amber' },
+  { abbr: 'KLN', name: 'Klinik Sehat Sentosa', cat: 'Kesehatan', color: 'green' },
 ]
 
 

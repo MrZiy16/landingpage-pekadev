@@ -1,12 +1,12 @@
 import { CLIENTS } from '../data'
 
 const COLOR_MAP = {
-  blue:   { bg: 'rgba(59,130,246,0.08)',  border: 'rgba(59,130,246,0.2)',   text: '#2563eb' },
-  green:  { bg: 'rgba(22,163,74,0.08)',   border: 'rgba(22,163,74,0.2)',    text: '#16a34a' },
-  purple: { bg: 'rgba(124,58,237,0.08)',  border: 'rgba(124,58,237,0.2)',   text: '#7c3aed' },
-  amber:  { bg: 'rgba(217,119,6,0.08)',   border: 'rgba(217,119,6,0.2)',    text: '#d97706' },
-  rose:   { bg: 'rgba(225,29,72,0.08)',   border: 'rgba(225,29,72,0.2)',    text: '#e11d48' },
-  cyan:   { bg: 'rgba(6,182,212,0.08)',   border: 'rgba(6,182,212,0.2)',    text: '#0891b2' },
+  blue: { bg: 'rgba(59,130,246,0.08)', border: 'rgba(59,130,246,0.2)', text: '#2563eb' },
+  green: { bg: 'rgba(22,163,74,0.08)', border: 'rgba(22,163,74,0.2)', text: '#16a34a' },
+  purple: { bg: 'rgba(124,58,237,0.08)', border: 'rgba(124,58,237,0.2)', text: '#7c3aed' },
+  amber: { bg: 'rgba(217,119,6,0.08)', border: 'rgba(217,119,6,0.2)', text: '#d97706' },
+  rose: { bg: 'rgba(225,29,72,0.08)', border: 'rgba(225,29,72,0.2)', text: '#e11d48' },
+  cyan: { bg: 'rgba(6,182,212,0.08)', border: 'rgba(6,182,212,0.2)', text: '#0891b2' },
 }
 
 export default function TrustSection() {
